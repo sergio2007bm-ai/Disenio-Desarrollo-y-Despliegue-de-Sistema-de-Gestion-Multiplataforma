@@ -1,0 +1,7 @@
+{
+  "name": "Disenio-Desarrollo-y-Despliegue-de-Sistema-de-Gestion-Multiplataforma",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone"
+}
