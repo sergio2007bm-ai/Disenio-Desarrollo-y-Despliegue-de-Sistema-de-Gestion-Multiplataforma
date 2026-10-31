@@ -1,0 +1,44 @@
+:host {
+  display: block;
+}
+ 
+.stat {
+  width: 100%;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-template-areas: 'icon value' 'icon label';
+  align-items: center;
+  column-gap: 14px;
+  padding: 16px;
+  text-align: left;
+  font: inherit;
+  color: #111827;
+  background: #fff;
+  border: 1px solid #d1d5db;
+  border-left: 6px solid var(--accent);
+  border-radius: 10px;
+  cursor: pointer;
+}
+ 
+ion-icon {
+  grid-area: icon;
+  font-size: 2rem;
+  color: var(--accent);
+}
+ 
+.value {
+  grid-area: value;
+  font-size: 1.8rem;
+  font-weight: 700;
+  line-height: 1.1;
+}
+ 
+.label {
+  grid-area: label;
+  color: #374151;
+}
+ 
+.stat:focus-visible {
+  outline: 3px solid #1d4ed8;
+  outline-offset: 2px;
+}

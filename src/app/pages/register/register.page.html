@@ -1,0 +1,66 @@
+<ion-content class="ion-padding">
+  <main class="auth">
+    <h1>Crear cuenta</h1>
+    <p>Regístrate para empezar a gestionar tus tareas.</p>
+ 
+    <form [formGroup]="form" (ngSubmit)="submit()" novalidate>
+      <ion-input
+        formControlName="fullName"
+        label="Nombre completo"
+        labelPlacement="floating"
+        fill="outline"
+        autocomplete="name"
+        [errorText]="errorOf('fullName')"
+      ></ion-input>
+ 
+      <ion-input
+        type="email"
+        formControlName="email"
+        label="Correo electrónico"
+        labelPlacement="floating"
+        fill="outline"
+        autocomplete="email"
+        [helperText]="form.controls.email.pending ? 'Comprobando disponibilidad…' : ''"
+        [errorText]="errorOf('email')"
+      ></ion-input>
+ 
+      <ion-input
+        type="password"
+        formControlName="password"
+        label="Contraseña"
+        labelPlacement="floating"
+        fill="outline"
+        autocomplete="new-password"
+        [errorText]="errorOf('password')"
+      ></ion-input>
+ 
+      <ion-input
+        type="password"
+        formControlName="confirm"
+        label="Repite la contraseña"
+        labelPlacement="floating"
+        fill="outline"
+        autocomplete="new-password"
+        [errorText]="errorOf('confirm')"
+      ></ion-input>
+ 
+      @if (form.hasError('passwordsMismatch') && form.controls.confirm.touched) {
+        <p class="form-error" role="alert">Las contraseñas no coinciden.</p>
+      }
+ 
+      @if (errorMsg(); as msg) {
+        <p class="form-error" role="alert">{{ msg }}</p>
+      }
+ 
+      <ion-button type="submit" expand="block" [disabled]="loading() || form.pending">
+        @if (loading()) {
+          <ion-spinner name="crescent" aria-label="Cargando"></ion-spinner>
+        } @else {
+          Crear cuenta
+        }
+      </ion-button>
+    </form>
+ 
+    <p class="alt">¿Ya tienes cuenta? <a routerLink="/login">Inicia sesión</a></p>
+  </main>
+</ion-content>

@@ -1,0 +1,18 @@
+.auth {
+  max-width: 420px;
+  margin: 8vh auto 0;
+ 
+  ion-input {
+    margin-bottom: 16px;
+  }
+}
+ 
+.form-error {
+  color: var(--ion-color-danger-shade);
+  font-weight: 600;
+}
+ 
+.alt {
+  text-align: center;
+  margin-top: 24px;
+}

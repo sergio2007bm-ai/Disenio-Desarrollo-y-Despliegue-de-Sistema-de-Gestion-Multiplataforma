@@ -1,0 +1,71 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Dashboard</ion-title>
+  </ion-toolbar>
+</ion-header>
+ 
+<ion-content class="ion-padding">
+  <main class="dash">
+    <h1 class="sr-only">Cuadro de mando</h1>
+ 
+    <div class="toolbar">
+      <ion-button fill="outline" (click)="load()" [disabled]="loading()">Actualizar datos</ion-button>
+    </div>
+ 
+    <ion-segment [(ngModel)]="priority" aria-label="Filtrar por prioridad">
+      <ion-segment-button value="all"><ion-label>Todas</ion-label></ion-segment-button>
+      <ion-segment-button value="high"><ion-label>Alta</ion-label></ion-segment-button>
+      <ion-segment-button value="medium"><ion-label>Media</ion-label></ion-segment-button>
+      <ion-segment-button value="low"><ion-label>Baja</ion-label></ion-segment-button>
+    </ion-segment>
+ 
+    @if (loading()) {
+      <div class="state" role="status">
+        <ion-spinner name="crescent"></ion-spinner>
+        <span>Cargando datos…</span>
+      </div>
+    } @else if (error()) {
+      <div class="state" role="alert">
+        <p>{{ error() }}</p>
+        <ion-button fill="outline" (click)="load()">Reintentar</ion-button>
+      </div>
+    } @else {
+      <section aria-labelledby="kpi-title">
+        <h2 id="kpi-title">Resumen</h2>
+        <div class="grid kpis">
+          <app-stat-card label="Tareas totales" [value]="total()" [icon]="icons.total"></app-stat-card>
+          <app-stat-card label="Pendientes" [value]="todo()" [icon]="icons.todo" color="warning"></app-stat-card>
+          <app-stat-card label="En curso" [value]="inProgress()" [icon]="icons.progress" color="medium"></app-stat-card>
+          <app-stat-card label="Completadas" [value]="done()" [icon]="icons.done" color="success"></app-stat-card>
+        </div>
+      </section>
+ 
+      <section aria-labelledby="charts-title">
+        <h2 id="charts-title">Gráficos</h2>
+        <div class="grid charts">
+          <article class="panel">
+            <h3>Tareas por estado</h3>
+            <app-chart
+              type="doughnut"
+              title="Tareas por estado"
+              [labels]="statusChart().labels"
+              [data]="statusChart().data"
+            ></app-chart>
+          </article>
+          <article class="panel">
+            <h3>Tareas por persona</h3>
+            <app-chart
+              type="pie"
+              title="Tareas por persona"
+              [labels]="userChart().labels"
+              [data]="userChart().data"
+            ></app-chart>
+          </article>
+        </div>
+      </section>
+    }
+  </main>
+</ion-content>

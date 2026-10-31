@@ -1,0 +1,61 @@
+.dash {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+ 
+h2 {
+  margin: 24px 0 12px;
+  font-size: 1.25rem;
+}
+ 
+.grid {
+  display: grid;
+  gap: 16px;
+}
+ 
+/* Mobile First: una columna por defecto y más columnas al crecer la pantalla. */
+.kpis {
+  grid-template-columns: 1fr;
+}
+ 
+.charts {
+  grid-template-columns: 1fr;
+}
+ 
+@media (min-width: 576px) {
+  .kpis {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+ 
+@media (min-width: 992px) {
+  .kpis {
+    grid-template-columns: repeat(4, 1fr);
+  }
+  .charts {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+ 
+.panel {
+  padding: 16px;
+  border: 1px solid #d1d5db;
+  border-radius: 10px;
+  background: var(--ion-card-background, #fff);
+ 
+  h3 {
+    margin-top: 0;
+  }
+}
+ 
+.state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 32px;
+}
+ 
+.toolbar {
+  margin-bottom: 12px;
+}

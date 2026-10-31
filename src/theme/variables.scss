@@ -1,2 +1,11 @@
 // For information on how to create your own theme, please refer to:
 // https://ionicframework.com/docs/theming/
+/* Gris "medium" más oscuro para cumplir el contraste mínimo 4,5:1 sobre blanco. */
+:root {
+  --ion-color-medium: #5f6368;
+  --ion-color-medium-rgb: 95, 99, 104;
+  --ion-color-medium-contrast: #ffffff;
+  --ion-color-medium-contrast-rgb: 255, 255, 255;
+  --ion-color-medium-shade: #53575b;
+  --ion-color-medium-tint: #6f7377;
+}

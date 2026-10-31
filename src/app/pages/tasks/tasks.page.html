@@ -1,0 +1,64 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>{{ auth.isAdmin() ? 'Todas las tareas' : 'Mis tareas' }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+ 
+<ion-content class="ion-padding">
+  <main class="page">
+    <h1 class="sr-only">Listado de tareas</h1>
+ 
+    <div class="top">
+      <ion-segment [(ngModel)]="statusFilter" aria-label="Filtrar tareas por estado">
+        <ion-segment-button value="all"><ion-label>Todas</ion-label></ion-segment-button>
+        <ion-segment-button value="todo"><ion-label>Pendientes</ion-label></ion-segment-button>
+        <ion-segment-button value="in_progress"><ion-label>En curso</ion-label></ion-segment-button>
+        <ion-segment-button value="done"><ion-label>Completadas</ion-label></ion-segment-button>
+      </ion-segment>
+ 
+      <ion-button (click)="create()">
+        <ion-icon aria-hidden="true" slot="start" name="add-outline"></ion-icon>
+        Nueva tarea
+      </ion-button>
+
+
+      <div class="export">
+        <ion-button fill="outline" (click)="exportCsv()" [disabled]="!visible().length">
+          <ion-icon aria-hidden="true" slot="start" name="document-text-outline"></ion-icon>
+          Exportar CSV
+        </ion-button>
+        <ion-button fill="outline" (click)="exportPdf()" [disabled]="!visible().length">
+          <ion-icon aria-hidden="true" slot="start" name="download-outline"></ion-icon>
+          Exportar PDF
+        </ion-button>
+      </div>
+
+    </div>
+ 
+    @if (loading()) {
+      <div class="state" role="status">
+        <ion-spinner name="crescent"></ion-spinner>
+        <span>Cargando tareas…</span>
+      </div>
+    } @else if (error()) {
+      <div class="state" role="alert">
+        <p>{{ error() }}</p>
+        <ion-button fill="outline" (click)="load()">Reintentar</ion-button>
+      </div>
+    } @else {
+      <app-data-table
+        caption="Listado de tareas"
+        searchLabel="Buscar tareas"
+        actionLabel="Editar"
+        rowLabelKey="title"
+        [rows]="rows()"
+        [columns]="columns"
+        [pageSize]="8"
+        (rowAction)="edit($event)"
+      ></app-data-table>
+    }
+  </main>
+</ion-content>

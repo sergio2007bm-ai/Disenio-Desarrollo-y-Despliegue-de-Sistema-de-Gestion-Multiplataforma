@@ -1,0 +1,26 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Ayuda</ion-title>
+  </ion-toolbar>
+</ion-header>
+ 
+<ion-content class="ion-padding">
+  <main class="help">
+    <h1>Manual de usuario</h1>
+    <p>Pulsa sobre cada tema para ver las instrucciones.</p>
+ 
+    <ion-accordion-group>
+      @for (t of visibleTopics; track t.title) {
+        <ion-accordion [value]="t.title">
+          <ion-item slot="header">
+            <ion-label>{{ t.title }}</ion-label>
+          </ion-item>
+          <div class="ion-padding" slot="content">{{ t.body }}</div>
+        </ion-accordion>
+      }
+    </ion-accordion-group>
+  </main>
+</ion-content>

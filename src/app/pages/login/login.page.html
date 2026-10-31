@@ -1,0 +1,42 @@
+<ion-content class="ion-padding">
+  <main class="auth">
+    <h1>TaskHub</h1>
+    <p>Inicia sesión para gestionar tus tareas.</p>
+ 
+    <form [formGroup]="form" (ngSubmit)="submit()" novalidate>
+      <ion-input
+        type="email"
+        formControlName="email"
+        label="Correo electrónico"
+        labelPlacement="floating"
+        fill="outline"
+        autocomplete="email"
+        [errorText]="errorOf('email')"
+      ></ion-input>
+ 
+      <ion-input
+        type="password"
+        formControlName="password"
+        label="Contraseña"
+        labelPlacement="floating"
+        fill="outline"
+        autocomplete="current-password"
+        [errorText]="errorOf('password')"
+      ></ion-input>
+ 
+      @if (errorMsg(); as msg) {
+        <p class="form-error" role="alert">{{ msg }}</p>
+      }
+ 
+      <ion-button type="submit" expand="block" [disabled]="loading()">
+        @if (loading()) {
+          <ion-spinner name="crescent" aria-label="Cargando"></ion-spinner>
+        } @else {
+          Entrar
+        }
+      </ion-button>
+    </form>
+ 
+    <p class="alt">¿No tienes cuenta? <a routerLink="/registro">Regístrate</a></p>
+  </main>
+</ion-content>

@@ -1,0 +1,21 @@
+.task-form {
+  max-width: 560px;
+  margin: 0 auto;
+ 
+  ion-input,
+  ion-textarea,
+  ion-select {
+    margin-bottom: 16px;
+  }
+}
+ 
+.actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+ 
+.form-error {
+  color: var(--ion-color-danger-shade);
+  font-weight: 600;
+}

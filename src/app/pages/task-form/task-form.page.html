@@ -1,0 +1,94 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/tareas" text="Volver"></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{ taskId ? 'Editar tarea' : 'Nueva tarea' }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+ 
+<ion-content class="ion-padding">
+  <main class="task-form">
+    <h1 class="sr-only">{{ taskId ? 'Editar tarea' : 'Nueva tarea' }}</h1>
+ 
+    <form [formGroup]="form" (ngSubmit)="save()" novalidate>
+      <ion-input
+        formControlName="title"
+        label="Título"
+        labelPlacement="floating"
+        fill="outline"
+        [counter]="true"
+        maxlength="80"
+        [errorText]="errorOf('title')"
+      ></ion-input>
+ 
+      <ion-textarea
+        formControlName="description"
+        label="Descripción"
+        labelPlacement="floating"
+        fill="outline"
+        [autoGrow]="true"
+        rows="3"
+      ></ion-textarea>
+ 
+      <ion-select
+        formControlName="status"
+        label="Estado"
+        labelPlacement="floating"
+        fill="outline"
+        interface="popover"
+      >
+        @for (s of statuses; track s.value) {
+          <ion-select-option [value]="s.value">{{ s.label }}</ion-select-option>
+        }
+      </ion-select>
+ 
+      <ion-select
+        formControlName="priority"
+        label="Prioridad"
+        labelPlacement="floating"
+        fill="outline"
+        interface="popover"
+      >
+        @for (p of priorities; track p.value) {
+          <ion-select-option [value]="p.value">{{ p.label }}</ion-select-option>
+        }
+      </ion-select>
+ 
+      @if (auth.isAdmin()) {
+        <ion-select
+          formControlName="assigned_to"
+          label="Asignada a"
+          labelPlacement="floating"
+          fill="outline"
+          interface="popover"
+          [errorText]="errorOf('assigned_to')"
+        >
+          @for (p of profiles(); track p.id) {
+            <ion-select-option [value]="p.id">{{ p.full_name }}</ion-select-option>
+          }
+        </ion-select>
+      }
+ 
+      @if (errorMsg(); as msg) {
+        <p class="form-error" role="alert">{{ msg }}</p>
+      }
+ 
+      <div class="actions">
+        <ion-button type="submit" [disabled]="saving()">
+          @if (saving()) {
+            <ion-spinner name="crescent" aria-label="Guardando"></ion-spinner>
+          } @else {
+            Guardar
+          }
+        </ion-button>
+ 
+        @if (taskId && auth.isAdmin()) {
+          <ion-button type="button" color="danger" fill="outline" (click)="confirmDelete()">
+            Eliminar
+          </ion-button>
+        }
+      </div>
+    </form>
+  </main>
+</ion-content>
