@@ -10,10 +10,9 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "lint": "ng lint",
-
-    "lint": "ng lint",
-    "format": "prettier --write \"src/**/*.{ts,html,scss}\""
-
+    "format": "prettier --write \"src/**/*.{ts,html,scss}\"",
+    "docs": "compodoc -p tsconfig.doc.json -d documentation",
+    "docs:serve": "compodoc -p tsconfig.doc.json -d documentation -s"
   },
   "private": true,
   "dependencies": {
@@ -29,7 +28,11 @@
     "@capacitor/keyboard": "8.0.6",
     "@capacitor/status-bar": "8.0.4",
     "@ionic/angular": "^9.0.0",
+    "@supabase/supabase-js": "^2.118.0",
+    "chart.js": "^4.6.1",
     "ionicons": "^8.1.0",
+    "jspdf": "^4.2.1",
+    "jspdf-autotable": "^5.0.9",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0"
   },
@@ -39,6 +42,7 @@
     "@angular/compiler-cli": "22.2.3",
     "@angular/language-service": "22.2.3",
     "@capacitor/cli": "8.5.3",
+    "@compodoc/compodoc": "^2.0.0",
     "@eslint/js": "^10.0.1",
     "@ionic/angular-toolkit": "^13.0.0",
     "angular-eslint": "22.6.0",

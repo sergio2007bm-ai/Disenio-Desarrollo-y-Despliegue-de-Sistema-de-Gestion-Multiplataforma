@@ -1,0 +1,1477 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>Disenio-Desarrollo-y-Despliegue-de-Sistema-de-Gestion-Multiplataforma documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+          </script>
+          <script>
+              // --- Iframe navigation tracking for Template Playground ---
+              function sendCurrentUrlToParent() {
+                  if (window.parent && window.parent !== window) {
+                      window.parent.postMessage({
+                          type: 'compodoc-iframe-navigate',
+                          url: window.location.pathname + window.location.hash
+                      }, '*');
+                  }
+              }
+              window.addEventListener('hashchange', sendCurrentUrlToParent, false);
+              window.addEventListener('popstate', sendCurrentUrlToParent, false);
+              window.addEventListener('DOMContentLoaded', sendCurrentUrlToParent, false);
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-md-none p-0">
+               <div class="d-flex">
+                    <a href="../" class="navbar-brand">Disenio-Desarrollo-y-Despliegue-de-Sistema-de-Gestion-Multiplataforma documentation</a>
+                    <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+               </div>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search">
+    <button type="button"
+        class="search-input-clear"
+        aria-label="Clear search"
+        data-search-input-clear>&times;</button>
+</div>
+            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="d-none d-md-block menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Components</li>
+  <li class="breadcrumb-item"
+  >
+  TasksPage</li>
+</ol>
+
+<div class="io-file io-file-path" data-compodoc="entity-file-path">
+    <span class="icon ion-ios-document" aria-hidden="true"></span>
+    <code>src/app/pages/tasks/tasks.page.ts</code>
+</div>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a href="#info" class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li class="nav-item">
+            <a href="#api" class="nav-link"
+                role="tab" id="api-tab" data-bs-toggle="tab" data-link="api">API</a>
+        </li>
+        <li class="nav-item">
+            <a href="#source" class="nav-link"
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li class="nav-item">
+            <a href="#templateData" class="nav-link"
+                role="tab" id="templateData-tab" data-bs-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li class="nav-item">
+            <a href="#styleData" class="nav-link"
+                role="tab" id="styleData-tab" data-bs-toggle="tab" data-link="style">Styles</a>
+        </li>
+        <li class="nav-item">
+            <a href="#tree" class="nav-link"
+                role="tab" id="tree-tab" data-bs-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info">
+
+
+
+
+<section data-compodoc="block-metadata">
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover metadata">
+        <tbody>
+
+            <tr>
+                <td class="col-md-3">changeDetection</td>
+                <td class="col-md-9"><code>ChangeDetectionStrategy.OnPush</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-tasks</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">standalone</td>
+                <td class="col-md-9"><code>true</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">imports</td>
+                <td class="col-md-9">
+                        <div>        <code><a href="https://angular.dev/api/forms/FormsModule" target="_blank" >FormsModule</a></code>
+</div>
+                        <div>        <code><a href="../components/DataTableComponent.html" target="_self" >DataTableComponent</a></code>
+</div>
+                        <div>    <code>IonHeader</code>
+</div>
+                        <div>    <code>IonToolbar</code>
+</div>
+                        <div>    <code>IonButtons</code>
+</div>
+                        <div>    <code>IonMenuButton</code>
+</div>
+                        <div>    <code>IonTitle</code>
+</div>
+                        <div>    <code>IonContent</code>
+</div>
+                        <div>    <code>IonButton</code>
+</div>
+                        <div>    <code>IonIcon</code>
+</div>
+                        <div>    <code>IonSegment</code>
+</div>
+                        <div>    <code>IonSegmentButton</code>
+</div>
+                        <div>    <code>IonLabel</code>
+</div>
+                        <div>    <code>IonSpinner</code>
+</div>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">styleUrls</td>
+                <td class="col-md-9"><code>./tasks.page.scss</code></td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./tasks.page.html</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+        <section data-compodoc="block-relationships">
+            <h3>Relationships</h3>
+
+            <div class="row pt-3">
+                <div class="col-sm-6">
+                    <h4>Used by</h4>
+                        <p class="comment"><i>No results matching.</i></p>
+                </div>
+
+                <div class="col-sm-6">
+                    <h4>Depends on</h4>
+                        <ul class="list-unstyled relationships-list">
+                                <li>
+                                            <code><a href="https://angular.dev/api/forms/FormsModule" target="_blank" >FormsModule</a></code>
+                                </li>
+                                <li>
+                                            <code><a href="../components/DataTableComponent.html" target="_self" >DataTableComponent</a></code>
+                                </li>
+                                <li>
+                                        <code>IonHeader</code>
+                                </li>
+                                <li>
+                                        <code>IonToolbar</code>
+                                </li>
+                                <li>
+                                        <code>IonButtons</code>
+                                </li>
+                                <li>
+                                        <code>IonMenuButton</code>
+                                </li>
+                                <li>
+                                        <code>IonTitle</code>
+                                </li>
+                                <li>
+                                        <code>IonContent</code>
+                                </li>
+                                <li>
+                                        <code>IonButton</code>
+                                </li>
+                                <li>
+                                        <code>IonIcon</code>
+                                </li>
+                                <li>
+                                        <code>IonSegment</code>
+                                </li>
+                                <li>
+                                        <code>IonSegmentButton</code>
+                                </li>
+                                <li>
+                                        <code>IonLabel</code>
+                                </li>
+                                <li>
+                                        <code>IonSpinner</code>
+                                </li>
+                        </ul>
+                </div>
+            </div>
+        </section>
+</div>
+
+    <div class="tab-pane fade " id="api">    <section data-compodoc="block-index">
+    <h3 id="index">Index</h3>
+        <table class="table table-sm table-bordered index-table">
+            <tbody>
+                <tr>
+                    <td class="col-md-3">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                    <td class="col-md-9">
+                        <ul class="index-list">
+                            <li>
+                                <span class="reference-badge reference-badge--property" aria-hidden="true">P</span>
+                                    <span class="modifier">Private</span>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#api" >api</a>
+                            </li>
+                            <li>
+                                <span class="reference-badge reference-badge--property" aria-hidden="true">P</span>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#auth" >auth</a>
+                            </li>
+                            <li>
+                                <span class="reference-badge reference-badge--property" aria-hidden="true">P</span>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#columns" >columns</a>
+                            </li>
+                            <li>
+                                <span class="reference-badge reference-badge--property" aria-hidden="true">P</span>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#error" >error</a>
+                            </li>
+                            <li>
+                                <span class="reference-badge reference-badge--property" aria-hidden="true">P</span>
+                                    <span class="modifier">Private</span>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#exporter" >exporter</a>
+                            </li>
+                            <li>
+                                <span class="reference-badge reference-badge--property" aria-hidden="true">P</span>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#loading" >loading</a>
+                            </li>
+                            <li>
+                                <span class="reference-badge reference-badge--property" aria-hidden="true">P</span>
+                                    <span class="modifier">Private</span>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#router" >router</a>
+                            </li>
+                            <li>
+                                <span class="reference-badge reference-badge--property" aria-hidden="true">P</span>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#rows" >rows</a>
+                            </li>
+                            <li>
+                                <span class="reference-badge reference-badge--property" aria-hidden="true">P</span>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#statusFilter" >statusFilter</a>
+                            </li>
+                            <li>
+                                <span class="reference-badge reference-badge--property" aria-hidden="true">P</span>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#tasks" >tasks</a>
+                            </li>
+                            <li>
+                                <span class="reference-badge reference-badge--property" aria-hidden="true">P</span>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#visible" >visible</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <table class="table table-sm table-bordered index-table">
+            <tbody>
+                <tr>
+                    <td class="col-md-3">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                    <td class="col-md-9">
+                        <ul class="index-list">
+                            <li>
+                                <span class="reference-badge reference-badge--method" aria-hidden="true">M</span>
+                                <a href="#create" >create</a>
+                            </li>
+                            <li>
+                                <span class="reference-badge reference-badge--method" aria-hidden="true">M</span>
+                                <a href="#edit" >edit</a>
+                            </li>
+                            <li>
+                                <span class="reference-badge reference-badge--method" aria-hidden="true">M</span>
+                                <a href="#exportCsv" >exportCsv</a>
+                            </li>
+                            <li>
+                                <span class="reference-badge reference-badge--method" aria-hidden="true">M</span>
+                                    <span class="modifier">Async</span>
+                                <a href="#exportPdf" >exportPdf</a>
+                            </li>
+                            <li>
+                                <span class="reference-badge reference-badge--method" aria-hidden="true">M</span>
+                                <a href="#ionViewWillEnter" >ionViewWillEnter</a>
+                            </li>
+                            <li>
+                                <span class="reference-badge reference-badge--method" aria-hidden="true">M</span>
+                                <a href="#load" >load</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+
+
+
+
+</section>
+
+    <section data-compodoc="block-constructor">
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor()</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="86" class="link-to-prism">src/app/pages/tasks/tasks.page.ts:86</a></div>
+                            </td>
+                        </tr>
+
+            </tbody>
+        </table>
+</section>
+
+
+
+
+
+    <section data-compodoc="block-methods">
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="create"></a>
+                    <span class="name">
+                        <span ><b>create</b></span>
+                        <a href="#create"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>create()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="122"
+                                    class="link-to-prism">src/app/pages/tasks/tasks.page.ts:122</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="edit"></a>
+                    <span class="name">
+                        <span ><b>edit</b></span>
+                        <a href="#edit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>edit(row: <a href="../interfaces/TaskRow.html" target="_self">TaskRow</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="116"
+                                    class="link-to-prism">src/app/pages/tasks/tasks.page.ts:116</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>row</td>
+                                            <td>
+                                                            <code><a href="../interfaces/TaskRow.html" target="_self" >TaskRow</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="exportCsv"></a>
+                    <span class="name">
+                        <span ><b>exportCsv</b></span>
+                        <a href="#exportCsv"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>exportCsv()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="131"
+                                    class="link-to-prism">src/app/pages/tasks/tasks.page.ts:131</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="exportPdf"></a>
+                    <span class="name">
+                            <span class="modifier">Async</span>
+                        <span ><b>exportPdf</b></span>
+                        <a href="#exportPdf"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>exportPdf()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="135"
+                                    class="link-to-prism">src/app/pages/tasks/tasks.page.ts:135</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>    <code>Promise&lt;void&gt;</code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ionViewWillEnter"></a>
+                    <span class="name">
+                        <span ><b>ionViewWillEnter</b></span>
+                        <a href="#ionViewWillEnter"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ionViewWillEnter()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="93"
+                                    class="link-to-prism">src/app/pages/tasks/tasks.page.ts:93</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="load"></a>
+                    <span class="name">
+                        <span ><b>load</b></span>
+                        <a href="#load"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>load()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="97"
+                                    class="link-to-prism">src/app/pages/tasks/tasks.page.ts:97</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-properties">
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="api"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                            <span class="modifier">Readonly</span>
+                        <span ><b>api</b></span>
+                        <a href="#api"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>unknown</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>inject(TasksApiService)</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="44" class="link-to-prism">src/app/pages/tasks/tasks.page.ts:44</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="auth"></a>
+                    <span class="name">
+                            <span class="modifier">Readonly</span>
+                        <span ><b>auth</b></span>
+                        <a href="#auth"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>unknown</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>inject(AuthService)</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="46" class="link-to-prism">src/app/pages/tasks/tasks.page.ts:46</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="columns"></a>
+                    <span class="name">
+                            <span class="modifier">Readonly</span>
+                        <span ><b>columns</b></span>
+                        <a href="#columns"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>TableColumn&lt;TaskRow&gt;[]</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[
+    { key: &#x27;title&#x27;, label: &#x27;Título&#x27; },
+    { key: &#x27;status&#x27;, label: &#x27;Estado&#x27; },
+    { key: &#x27;priority&#x27;, label: &#x27;Prioridad&#x27; },
+    { key: &#x27;assignee&#x27;, label: &#x27;Asignada a&#x27; },
+    { key: &#x27;created&#x27;, label: &#x27;Creada&#x27; },
+  ]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="80" class="link-to-prism">src/app/pages/tasks/tasks.page.ts:80</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="error"></a>
+                    <span class="name">
+                            <span class="modifier">Readonly</span>
+                        <span ><b>error</b></span>
+                        <a href="#error"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>unknown</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>signal&lt;string | null&gt;(null)</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="50" class="link-to-prism">src/app/pages/tasks/tasks.page.ts:50</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="exporter"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                            <span class="modifier">Readonly</span>
+                        <span ><b>exporter</b></span>
+                        <a href="#exporter"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>unknown</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>inject(ExportService)</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="129" class="link-to-prism">src/app/pages/tasks/tasks.page.ts:129</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="loading"></a>
+                    <span class="name">
+                            <span class="modifier">Readonly</span>
+                        <span ><b>loading</b></span>
+                        <a href="#loading"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>unknown</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>signal(true)</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="49" class="link-to-prism">src/app/pages/tasks/tasks.page.ts:49</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="router"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                            <span class="modifier">Readonly</span>
+                        <span ><b>router</b></span>
+                        <a href="#router"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>unknown</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>inject(Router)</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="45" class="link-to-prism">src/app/pages/tasks/tasks.page.ts:45</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="rows"></a>
+                    <span class="name">
+                            <span class="modifier">Readonly</span>
+                        <span ><b>rows</b></span>
+                        <a href="#rows"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>unknown</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>computed&lt;TaskRow[]&gt;(() &#x3D;&gt;
+    this.visible().map((t) &#x3D;&gt; ({
+      id: t.id,
+      title: t.title,
+      status: STATUS_LABEL[t.status],
+      priority: PRIORITY_LABEL[t.priority],
+      assignee: t.profiles?.full_name ?? &#x27;—&#x27;,
+      created: t.created_at.slice(0, 10),
+    })),
+  )</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="66" class="link-to-prism">src/app/pages/tasks/tasks.page.ts:66</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="statusFilter"></a>
+                    <span class="name">
+                            <span class="modifier">Readonly</span>
+                        <span ><b>statusFilter</b></span>
+                        <a href="#statusFilter"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>unknown</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>signal&lt;&#x27;all&#x27; | TaskStatus&gt;(&#x27;all&#x27;)</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="51" class="link-to-prism">src/app/pages/tasks/tasks.page.ts:51</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="tasks"></a>
+                    <span class="name">
+                            <span class="modifier">Readonly</span>
+                        <span ><b>tasks</b></span>
+                        <a href="#tasks"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>unknown</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>signal&lt;Task[]&gt;([])</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="48" class="link-to-prism">src/app/pages/tasks/tasks.page.ts:48</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="visible"></a>
+                    <span class="name">
+                            <span class="modifier">Readonly</span>
+                        <span ><b>visible</b></span>
+                        <a href="#visible"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>unknown</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>computed(() &#x3D;&gt; {
+    const filter &#x3D; this.statusFilter();
+    return filter &#x3D;&#x3D;&#x3D; &#x27;all&#x27; ? this.tasks() : this.tasks().filter((t) &#x3D;&gt; t.status &#x3D;&#x3D;&#x3D; filter);
+  })</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="57" class="link-to-prism">src/app/pages/tasks/tasks.page.ts:57</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+</section>
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, computed, inject, signal } from &#x27;@angular/core&#x27;;
+import { FormsModule } from &#x27;@angular/forms&#x27;;
+import { Router } from &#x27;@angular/router&#x27;;
+import {IonButton, IonButtons, IonContent, IonHeader, IonIcon, IonLabel, IonMenuButton, IonSegment,IonSegmentButton, IonSpinner, IonTitle, IonToolbar,} from &#x27;@ionic/angular&#x27;;
+import { addIcons } from &#x27;ionicons&#x27;;
+import { addOutline, documentTextOutline, downloadOutline } from &#x27;ionicons/icons&#x27;;
+import {PRIORITY_LABEL, STATUS_LABEL, Task, TaskStatus,} from &#x27;../../core/models/models&#x27;;
+import { AuthService } from &#x27;../../core/services/auth.service&#x27;;
+import { TasksApiService } from &#x27;../../core/services/tasks-api.service&#x27;;
+import {DataTableComponent, TableColumn,} from &#x27;../../shared/components/data-table/data-table.component&#x27;;
+import { ExportService } from &#x27;../../core/services/export.service&#x27;;
+ 
+
+
+/** En la página de tareas, se muestran las tareas de cada usuario registrado
+Si entras como admin podrás ver las tareas de todos los usuarios
+Además se puede descargar la página actual de tareas que se está viendo como un PDF y un CSV,
+pero solo de la página que estás viendo, si hay tantas tareas que no caben en una sola página
+tendrás que irte a la siguiente página y volver a descargar el PDF y el CSV
+Esque si por ejemplo hay más de mil tareas y solo te interesan las de unas páginas en concreto, 
+sería demasiado grande un CSV con mil filas */
+export interface TaskRow {
+  id: number;
+  title: string;
+  status: string;
+  priority: string;
+  assignee: string;
+  created: string;
+}
+ 
+
+
+@Component({
+  selector: &#x27;app-tasks&#x27;,
+  templateUrl: &#x27;./tasks.page.html&#x27;,
+  styleUrls: [&#x27;./tasks.page.scss&#x27;],
+  imports: [FormsModule, DataTableComponent, IonHeader, IonToolbar, IonButtons, IonMenuButton, IonTitle,IonContent, IonButton, IonIcon, IonSegment, IonSegmentButton, IonLabel, IonSpinner,],
+})
+
+
+
+
+export class TasksPage {
+  private readonly api &#x3D; inject(TasksApiService);
+  private readonly router &#x3D; inject(Router);
+  readonly auth &#x3D; inject(AuthService);
+ 
+  readonly tasks &#x3D; signal&lt;Task[]&gt;([]);
+  readonly loading &#x3D; signal(true);
+  readonly error &#x3D; signal&lt;string | null&gt;(null);
+  readonly statusFilter &#x3D; signal&lt;&#x27;all&#x27; | TaskStatus&gt;(&#x27;all&#x27;);
+ 
+
+
+
+  /* Las tareas tras haber aplicado el filtro de estado */
+  readonly visible &#x3D; computed(() &#x3D;&gt; {
+    const filter &#x3D; this.statusFilter();
+    return filter &#x3D;&#x3D;&#x3D; &#x27;all&#x27; ? this.tasks() : this.tasks().filter((t) &#x3D;&gt; t.status &#x3D;&#x3D;&#x3D; filter);
+  });
+ 
+
+
+
+  /* Filas formateadas que utiliza la tabla (tienen id, título, estado, prioridad, etc) */
+  readonly rows &#x3D; computed&lt;TaskRow[]&gt;(() &#x3D;&gt;
+    this.visible().map((t) &#x3D;&gt; ({
+      id: t.id,
+      title: t.title,
+      status: STATUS_LABEL[t.status],
+      priority: PRIORITY_LABEL[t.priority],
+      assignee: t.profiles?.full_name ?? &#x27;—&#x27;,
+      created: t.created_at.slice(0, 10),
+    })),
+  );
+ 
+
+
+
+  readonly columns: TableColumn&lt;TaskRow&gt;[] &#x3D; [
+    { key: &#x27;title&#x27;, label: &#x27;Título&#x27; },
+    { key: &#x27;status&#x27;, label: &#x27;Estado&#x27; },
+    { key: &#x27;priority&#x27;, label: &#x27;Prioridad&#x27; },
+    { key: &#x27;assignee&#x27;, label: &#x27;Asignada a&#x27; },
+    { key: &#x27;created&#x27;, label: &#x27;Creada&#x27; },
+  ];
+
+
+ 
+  constructor() {addIcons({ addOutline, downloadOutline, documentTextOutline });}
+ 
+  /* Se va a ejecutar cada vez que la página se muestra, y también al volver atrás desde otra */
+  ionViewWillEnter(): void {this.load();}
+ 
+
+
+  load(): void {
+    this.loading.set(true);
+    this.error.set(null);
+    this.api.list().subscribe({
+
+      next: (tasks) &#x3D;&gt; {
+        this.tasks.set(tasks);
+        this.loading.set(false);
+      },
+
+      error: () &#x3D;&gt; {
+        this.error.set(&#x27;No se han podido cargar las tareas.&#x27;); /* Me va a avisar si las tareas no se han podido cargar */
+        this.loading.set(false);
+      },
+    });
+  }
+ 
+
+
+  edit(row: TaskRow): void {
+    void this.router.navigate([&#x27;/tareas&#x27;, row.id, &#x27;editar&#x27;]);
+  }
+ 
+  
+
+  create(): void {
+    void this.router.navigateByUrl(&#x27;/tareas/nueva&#x27;);
+  }
+
+
+
+  /* Estos dos métodos sirven junto con el servicio de exportación para convertir un un informe PDF y CSV lo que se está viendo en la página */
+  private readonly exporter &#x3D; inject(ExportService);
+ 
+  exportCsv(): void {
+    this.exporter.exportCsv(this.visible());
+  }
+  
+  async exportPdf(): Promise&lt;void&gt; {
+    await this.exporter.exportPdf(this.visible(), this.auth.profile()?.full_name);
+  }
+
+}</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;ion-header&gt;
+  &lt;ion-toolbar color&#x3D;&quot;primary&quot;&gt;
+    &lt;ion-buttons slot&#x3D;&quot;start&quot;&gt;
+      &lt;ion-menu-button&gt;&lt;/ion-menu-button&gt;
+    &lt;/ion-buttons&gt;
+    &lt;ion-title&gt;{{ auth.isAdmin() ? &#x27;Todas las tareas&#x27; : &#x27;Mis tareas&#x27; }}&lt;/ion-title&gt;
+  &lt;/ion-toolbar&gt;
+&lt;/ion-header&gt;
+ 
+&lt;ion-content class&#x3D;&quot;ion-padding&quot;&gt;
+  &lt;main class&#x3D;&quot;page&quot;&gt;
+    &lt;h1 class&#x3D;&quot;sr-only&quot;&gt;Listado de tareas&lt;/h1&gt;
+ 
+    &lt;div class&#x3D;&quot;top&quot;&gt;
+      &lt;ion-segment [(ngModel)]&#x3D;&quot;statusFilter&quot; aria-label&#x3D;&quot;Filtrar tareas por estado&quot;&gt;
+        &lt;ion-segment-button value&#x3D;&quot;all&quot;&gt;&lt;ion-label&gt;Todas&lt;/ion-label&gt;&lt;/ion-segment-button&gt;
+        &lt;ion-segment-button value&#x3D;&quot;todo&quot;&gt;&lt;ion-label&gt;Pendientes&lt;/ion-label&gt;&lt;/ion-segment-button&gt;
+        &lt;ion-segment-button value&#x3D;&quot;in_progress&quot;&gt;&lt;ion-label&gt;En curso&lt;/ion-label&gt;&lt;/ion-segment-button&gt;
+        &lt;ion-segment-button value&#x3D;&quot;done&quot;&gt;&lt;ion-label&gt;Completadas&lt;/ion-label&gt;&lt;/ion-segment-button&gt;
+      &lt;/ion-segment&gt;
+ 
+      &lt;ion-button (click)&#x3D;&quot;create()&quot;&gt;
+        &lt;ion-icon aria-hidden&#x3D;&quot;true&quot; slot&#x3D;&quot;start&quot; name&#x3D;&quot;add-outline&quot;&gt;&lt;/ion-icon&gt;
+        Nueva tarea
+      &lt;/ion-button&gt;
+
+
+      &lt;div class&#x3D;&quot;export&quot;&gt;
+        &lt;ion-button fill&#x3D;&quot;outline&quot; (click)&#x3D;&quot;exportCsv()&quot; [disabled]&#x3D;&quot;!visible().length&quot;&gt;
+          &lt;ion-icon aria-hidden&#x3D;&quot;true&quot; slot&#x3D;&quot;start&quot; name&#x3D;&quot;document-text-outline&quot;&gt;&lt;/ion-icon&gt;
+          Exportar CSV
+        &lt;/ion-button&gt;
+        &lt;ion-button fill&#x3D;&quot;outline&quot; (click)&#x3D;&quot;exportPdf()&quot; [disabled]&#x3D;&quot;!visible().length&quot;&gt;
+          &lt;ion-icon aria-hidden&#x3D;&quot;true&quot; slot&#x3D;&quot;start&quot; name&#x3D;&quot;download-outline&quot;&gt;&lt;/ion-icon&gt;
+          Exportar PDF
+        &lt;/ion-button&gt;
+      &lt;/div&gt;
+
+    &lt;/div&gt;
+ 
+    @if (loading()) {
+      &lt;div class&#x3D;&quot;state&quot; role&#x3D;&quot;status&quot;&gt;
+        &lt;ion-spinner name&#x3D;&quot;crescent&quot;&gt;&lt;/ion-spinner&gt;
+        &lt;span&gt;Cargando tareas…&lt;/span&gt;
+      &lt;/div&gt;
+    } @else if (error()) {
+      &lt;div class&#x3D;&quot;state&quot; role&#x3D;&quot;alert&quot;&gt;
+        &lt;p&gt;{{ error() }}&lt;/p&gt;
+        &lt;ion-button fill&#x3D;&quot;outline&quot; (click)&#x3D;&quot;load()&quot;&gt;Reintentar&lt;/ion-button&gt;
+      &lt;/div&gt;
+    } @else {
+      &lt;app-data-table
+        caption&#x3D;&quot;Listado de tareas&quot;
+        searchLabel&#x3D;&quot;Buscar tareas&quot;
+        actionLabel&#x3D;&quot;Editar&quot;
+        rowLabelKey&#x3D;&quot;title&quot;
+        [rows]&#x3D;&quot;rows()&quot;
+        [columns]&#x3D;&quot;columns&quot;
+        [pageSize]&#x3D;&quot;8&quot;
+        (rowAction)&#x3D;&quot;edit($event)&quot;
+      &gt;&lt;/app-data-table&gt;
+    }
+  &lt;/main&gt;
+&lt;/ion-content&gt;
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="styleData">
+                <p class="comment">
+                    <code>./tasks.page.scss</code>
+                </p>
+                <pre class="line-numbers"><code class="language-scss">.page {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+ 
+.top {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+ 
+  ion-segment {
+    max-width: 520px;
+  }
+}
+ 
+.state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 32px;
+}
+
+
+.export {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis-network.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><ion-header>  <ion-toolbar color="primary">    <ion-buttons slot="start">      <ion-menu-button></ion-menu-button>    </ion-buttons>    <ion-title>{{ auth.isAdmin() ? \'Todas las tareas\' : \'Mis tareas\' }}</ion-title>  </ion-toolbar></ion-header> <ion-content class="ion-padding">  <main class="page">    <h1 class="sr-only">Listado de tareas</h1>     <div class="top">      <ion-segment [(ngModel)]="statusFilter" aria-label="Filtrar tareas por estado">        <ion-segment-button value="all"><ion-label>Todas</ion-label></ion-segment-button>        <ion-segment-button value="todo"><ion-label>Pendientes</ion-label></ion-segment-button>        <ion-segment-button value="in_progress"><ion-label>En curso</ion-label></ion-segment-button>        <ion-segment-button value="done"><ion-label>Completadas</ion-label></ion-segment-button>      </ion-segment>       <ion-button (click)="create()">        <ion-icon aria-hidden="true" slot="start" name="add-outline"></ion-icon>        Nueva tarea      </ion-button>      <div class="export">        <ion-button fill="outline" (click)="exportCsv()" [disabled]="!visible().length">          <ion-icon aria-hidden="true" slot="start" name="document-text-outline"></ion-icon>          Exportar CSV        </ion-button>        <ion-button fill="outline" (click)="exportPdf()" [disabled]="!visible().length">          <ion-icon aria-hidden="true" slot="start" name="download-outline"></ion-icon>          Exportar PDF        </ion-button>      </div>    </div>     @if (loading()) {      <div class="state" role="status">        <ion-spinner name="crescent"></ion-spinner>        <span>Cargando tareas…</span>      </div>    } @else if (error()) {      <div class="state" role="alert">        <p>{{ error() }}</p>        <ion-button fill="outline" (click)="load()">Reintentar</ion-button>      </div>    } @else {      <app-data-table        caption="Listado de tareas"        searchLabel="Buscar tareas"        actionLabel="Editar"        rowLabelKey="title"        [rows]="rows()"        [columns]="columns"        [pageSize]="8"        (rowAction)="edit($event)"      ></app-data-table>    }  </main></ion-content></div>'
+    var COMPONENTS = [{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'ChartComponent', 'selector': 'app-chart'},{'name': 'DashboardPage', 'selector': 'app-dashboard'},{'name': 'DataTableComponent', 'selector': 'app-data-table'},{'name': 'HelpPage', 'selector': 'app-help'},{'name': 'LoginPage', 'selector': 'app-login'},{'name': 'RegisterPage', 'selector': 'app-register'},{'name': 'StatCardComponent', 'selector': 'app-stat-card'},{'name': 'TaskFormPage', 'selector': 'app-task-form'},{'name': 'TasksPage', 'selector': 'app-tasks'}];
+    var DIRECTIVES = [];
+    var ACTUAL_COMPONENT = {'name': 'TasksPage'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'TasksPage.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script>
+               $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var updateDarkModeSwitchOffset = function () {
+                    var content = document.querySelector('.content');
+                    var scrollbarWidth = 0;
+
+                    if (content) {
+                         scrollbarWidth = Math.max(0, content.offsetWidth - content.clientWidth);
+                    }
+
+                    document.documentElement.style.setProperty(
+                         '--content-scrollbar-width',
+                         scrollbarWidth + 'px'
+                    );
+               };
+
+               updateDarkModeSwitchOffset();
+               requestAnimationFrame(updateDarkModeSwitchOffset);
+               window.addEventListener('resize', updateDarkModeSwitchOffset);
+
+               checkToggle(darkModeState);
+               if ($darkModeToggleSwitchers.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>
