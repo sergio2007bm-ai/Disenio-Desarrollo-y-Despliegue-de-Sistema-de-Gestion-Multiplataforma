@@ -125,3 +125,29 @@ create policy "tasks_update" on public.tasks
 create policy "tasks_delete" on public.tasks
   for delete to authenticated
   using (public.is_admin());
+
+
+
+/*
+Le he pedido a la ia que me de usuarios y tareas de prueba
+
+update public.profiles set role = 'admin', full_name = 'Admin Demo' /* Al primero le pongo rol admin */
+  where email = 'admin@taskhub.dev';
+update public.profiles set full_name = 'Ana Demo' where email = 'ana@taskhub.dev';
+update public.profiles set full_name = 'Luis Demo' where email = 'luis@taskhub.dev';
+
+insert into public.tasks (title, description, status, priority, assigned_to)
+select t.title, t.description, t.status, t.priority, p.id
+from (values
+  ('Preparar reunión semanal', 'Revisar agenda y objetivos', 'todo', 'medium', 'ana@taskhub.dev'),
+  ('Actualizar el manual de usuario', 'Añadir capturas nuevas', 'in_progress', 'low', 'ana@taskhub.dev'),
+  ('Enviar informe mensual', 'Exportar a PDF y enviar', 'done', 'high', 'ana@taskhub.dev'),
+  ('Revisar facturas del trimestre', null, 'todo', 'high', 'luis@taskhub.dev'),
+  ('Planificar vacaciones del equipo', 'Coordinar calendario', 'in_progress', 'medium', 'luis@taskhub.dev'),
+  ('Cerrar incidencias abiertas', 'Priorizar las críticas', 'done', 'medium', 'luis@taskhub.dev'),
+  ('Configurar copias de seguridad', 'Revisar la política', 'todo', 'high', 'admin@taskhub.dev'),
+  ('Auditar permisos de usuarios', null, 'in_progress', 'high', 'admin@taskhub.dev')
+) as t(title, description, status, priority, email)
+join public.profiles p on p.email = t.email;
+
+*/
